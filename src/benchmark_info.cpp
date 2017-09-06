@@ -5,7 +5,8 @@
 *******************************************************************************/
 #include "benchmark_info.h"
 
-int load_video_info(string base_path,string video_name, vector<Rect> &groundtruthRect, vector<String> &fileName){
+int load_video_info(string base_path, string video_name, vector<Rect> &groundtruthRect, vector<String> &fileName){
+
   string txt_path;
   if (strcmp(video_name.c_str(), "Jogging.1") == 0 || strcmp(video_name.c_str(), "Skating2.1") == 0)
   {
@@ -86,45 +87,35 @@ int load_video_info(string base_path,string video_name, vector<Rect> &groundtrut
 	return 1;
 }
 
-void getFiles(string path, vector<string>& files,vector<string>& names)
-{
 
-  long   hFile = 0;
+//void getFiles(string path, vector<string>& files,vector<string>& names)
+//{
 
-  struct _finddata_t fileinfo;
-  string p;
-  if ((hFile = _findfirst(p.assign(path).append("\\*").c_str(), &fileinfo)) != -1)
-  {
-    do
-    {
-      //if ((fileinfo.attrib &  _A_SUBDIR))
-      //{
-      //  if (strcmp(fileinfo.name, ".") != 0 && strcmp(fileinfo.name, "..") != 0)
-      //    getFiles(p.assign(path).append("\\").append(fileinfo.name), files);
-      //}
-      //else
-      //{
-      //  files.push_back(p.assign(path).append("\\").append(fileinfo.name));
-      //}
+//  long   hFile = 0;
 
-      
-      if (strcmp(fileinfo.name, ".") != 0 && strcmp(fileinfo.name, "..") != 0){
-        if (strcmp(fileinfo.name, "Jogging") == 0 || strcmp(fileinfo.name, "Skating2") == 0)
-        {
-          string name_temp = fileinfo.name;
-          names.push_back(name_temp + ".1");
-          files.push_back(p.assign(path).append("\\").append(fileinfo.name));
-          names.push_back(name_temp + ".2");
-          files.push_back(p.assign(path).append("\\").append(fileinfo.name));
-        }
-        else
-        {
-          names.push_back(fileinfo.name);
-          files.push_back(p.assign(path).append("\\").append(fileinfo.name));
-        }
+//  struct _finddata_t fileinfo;
+//  string p;
+//  if ((hFile = _findfirst(p.assign(path).append("\\*").c_str(), &fileinfo)) != -1)
+//  {
+//    do
+//    {
+//      if (strcmp(fileinfo.name, ".") != 0 && strcmp(fileinfo.name, "..") != 0){
+//        if (strcmp(fileinfo.name, "Jogging") == 0 || strcmp(fileinfo.name, "Skating2") == 0)
+//        {
+//          string name_temp = fileinfo.name;
+//          names.push_back(name_temp + ".1");
+//          files.push_back(p.assign(path).append("\\").append(fileinfo.name));
+//          names.push_back(name_temp + ".2");
+//          files.push_back(p.assign(path).append("\\").append(fileinfo.name));
+//        }
+//        else
+//        {
+//          names.push_back(fileinfo.name);
+//          files.push_back(p.assign(path).append("\\").append(fileinfo.name));
+//        }
         
-      }
-    } while (_findnext(hFile, &fileinfo) == 0);
-    _findclose(hFile);
-  }
-}
+//      }
+//    } while (_findnext(hFile, &fileinfo) == 0);
+//    _findclose(hFile);
+//  }
+//}

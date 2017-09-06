@@ -16,12 +16,13 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 
 # Declare the executable target build from src
 add_executable(main 
-  src/main.cpp 
+  src/main.cpp
   src/csk.cpp 
   src/csk.h 
-  src/benchmark_info.cpp 
-  src/benchmark_info.h 
-  src/run_tracker.cpp)
+  src/benchmark_info.cpp
+  src/benchmark_info.h
+  #src/run_tracker.cpp
+)
 
 # Link your application with OpenCV libraries
 target_link_libraries(main ${OpenCV_LIBS})

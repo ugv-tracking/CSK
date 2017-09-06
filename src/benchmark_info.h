@@ -17,4 +17,4 @@ using namespace cv;
 
 int load_video_info(string base_path, string video_name, vector<Rect> &groundtruthRect, vector<String> &fileName);
 
-void getFiles(string path, vector<string>& files, vector<string>& names);
+//void getFiles(string path, vector<string>& files, vector<string>& names);

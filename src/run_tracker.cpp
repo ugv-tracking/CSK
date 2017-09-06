@@ -49,7 +49,7 @@ int main(int argc, char** argv){
     int choice = 0;
     for (int i = 0; i < video_name_list.size(); i++)
     {
-      std::printf(" %02d  %12s\n", i, video_name_list[i]);
+      std::cout << i << video_name_list[i]<< std::endl;
     }
     cout << "\n\nChoice One Video!!" << endl;
     cin >> choice;
@@ -117,8 +117,9 @@ int tracker(string video_path, string video_name, double &precision, double &fps
     im = imread(img_files[frame], IMREAD_COLOR);
     im_gray = imread(img_files[frame], IMREAD_GRAYSCALE);
     if (resize_image){
-      resize(im, im, im.size() / 2, 0, 0, INTER_CUBIC);
-      resize(im_gray, im_gray, im.size() / 2, 0, 0, INTER_CUBIC);
+      cv::Size re_size((float)(im.size().width/2),(float)(im.size().height/2));
+      resize(im, im, re_size, 0, 0, INTER_CUBIC);
+      resize(im_gray, im_gray, re_size, 0, 0, INTER_CUBIC);
     }
 
     tic = getTickCount();
@@ -172,7 +173,7 @@ int tracker(string video_path, string video_name, double &precision, double &fps
   }
   time = time / getTickFrequency();
   vector<double>precisions = PrecisionCalculate(groundtruth_rect, result_rect);
-  printf("%12s - Precision (20px):%1.3f, FPS:%4.2f\n", video_name, precisions[20], double(img_files.size()) / time);
+  std::cout << video_name << " - Precision (20px):" << precisions[20] << ", FPS:" << double(img_files.size()) / time << std::endl;
   destroyAllWindows();
   precision = precisions[20];
   fps = double(img_files.size()) / time;
